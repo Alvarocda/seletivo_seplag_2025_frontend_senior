@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div class="min-h-screen min-w-screen flex flex-col">
+    <div class="h-32 bg-black w-full flex p-4">
+        <div class="flex gap-4">
+            <img src="assets/images/pjc_logo.svg">
+            <div class="flex flex-col text-white items-start justify-center text-lg">
+                <p class="font-semibold">Titulo 1</p>
+                <p>Titulo 2</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex-1 overflow-y-auto h-full w-full bg-gray-50 flex" style="flex: 1;">
+        <div style="flex: 1;">
+            <router-outlet></router-outlet>
+        </div>        
+    </div>
+</div>
+
+
