@@ -47,7 +47,9 @@
 				"austenc.tailwind-docs",
 				"donjayamanne.githistory",
 				"mhutchie.git-graph",
-				"esbenp.prettier-vscode"
+				"esbenp.prettier-vscode",
+				"cyrilletuzi.angular-schematics",
+				"Mikael.Angular-BeastCode"
 			]
 		}
 	}
