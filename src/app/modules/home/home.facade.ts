@@ -8,9 +8,11 @@ import { IDesaparecido, IFiltro } from './home.types';
 import { HomeState } from './state/home.state';
 import { DesaparecidosService } from './services/desaparecidos.service';
 import { HttpParams } from '@angular/common/http';
+import { PageEvent } from '@angular/material/paginator';
 
 @Injectable({ providedIn: 'root' })
 export class HomeFacade {
+  
   paginacao$: Observable<IPaginacaoRequest>;
   desaparecidos$: Observable<IResultadoPaginado<IDesaparecido>>;
   carregando$: Observable<boolean>;
@@ -69,4 +71,10 @@ export class HomeFacade {
     }
     return params;
   }
+
+
+  handlePagination(event: PageEvent) {
+    this._state.paginacao = {pagina: event.pageIndex, porPagina: event.pageSize};
+    this.carregarDesaparecidos();
+}
 }

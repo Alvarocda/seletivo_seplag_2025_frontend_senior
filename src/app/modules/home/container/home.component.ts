@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HomeFacade } from '../home.facade';
 import { Subject, takeUntil } from 'rxjs';
 import { IPaginacaoRequest, IResultadoPaginado } from '../../shared/paginacao/paginacao.types';
-import { IDesaparecido, IFiltro } from '../home.types';
+import { IDesaparecido, IFiltro, ListaSexos } from '../home.types';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
     selector: 'app-home',
@@ -11,10 +12,12 @@ import { IDesaparecido, IFiltro } from '../home.types';
 })
 
 export class HomeComponent implements OnInit, OnDestroy {
+
     private _isDestroyed$ = new Subject<void>();
     carregando: boolean = true;
     paginacao: IPaginacaoRequest = {pagina: 0, porPagina: 12};
     filtro: IFiltro = {} as IFiltro;
+    listaSexos = ListaSexos;
     desaparecidos: IResultadoPaginado<IDesaparecido> = {} as IResultadoPaginado<IDesaparecido>;
 
     constructor(private _facade: HomeFacade) { }
@@ -42,7 +45,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
 
-
+    handlePagination(event: PageEvent) {
+    this._facade.handlePagination(event);
+    }
     ngOnDestroy(): void {
         this._isDestroyed$.next();
         this._isDestroyed$.complete();

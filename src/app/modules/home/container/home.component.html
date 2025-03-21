@@ -1,27 +1,49 @@
-<div class="bg-gray-200 flex items-center justify-center p-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-4">
-        @for (desaparecido of desaparecidos.content; track $index) {
-            <mat-card class="max-w-96 w-full">    
-              <div class="w-full">
-                  <img [src]="desaparecido.urlFoto" class="w-full h-64 object-cover">
-              </div>
-              
-              <!-- <div class="bg-gray-400 w-full h-56">
+<div class="bg-gray-200 flex flex-col items-center justify-center p-8">
+  <div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-4"
+    >
+      @for (desaparecido of desaparecidos.content; track $index) {
+      <mat-card class="max-w-96 w-full cursor-pointer">
+        <div class="w-full">
+          <img [src]="desaparecido.urlFoto" class="w-full h-64 object-cover" />
+        </div>
+
+        <!-- <div class="bg-gray-400 w-full h-56">
               </div>     -->
-              <mat-card-title-group class="p-2">
-                <mat-card-title>
-                  {{ desaparecido.nome }}
-                </mat-card-title>
-                <mat-card-subtitle> Desaparecido a 8 dias </mat-card-subtitle>
-              </mat-card-title-group>
-              <mat-card-content class="-m-2">
-                <p>{{ desaparecido.idade }} Anos, {{ desaparecido.sexo}}</p>
-                <p><span>Data:</span> {{desaparecido.ultimaOcorrencia.dtDesaparecimento | date:'dd/MM/yyyy' }}</p>
-                <p><span>Local:</span> {{desaparecido.ultimaOcorrencia.localDesaparecimentoConcat }}</p>
-                
-              </mat-card-content>
-            </mat-card>
-            }
+        <mat-card-title-group class="p-2">
+          <mat-card-title>
+            {{ desaparecido.nome }}
+          </mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content class="-m-2 mt-2">
+          <p>
+            {{ desaparecido.idade }} Anos, {{ listaSexos[desaparecido.sexo] }}
+          </p>
+          <p>
+            <span>Data:</span>
+            {{
+              desaparecido.ultimaOcorrencia.dtDesaparecimento
+                | date : "dd/MM/yyyy"
+            }}
+          </p>
+          <p>
+            <span>Local:</span>
+            {{ desaparecido.ultimaOcorrencia.localDesaparecimentoConcat }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+      } @empty {
+      <div>Nenhum resultado encontrado</div>
+      }
     </div>
-  
+    <mat-paginator
+      class="w-full mt-4"
+      [length]="desaparecidos.totalElements"
+      [pageSizeOptions]="[20,  50, 100]"
+      aria-label="Selecione uma página"
+      (page)="handlePagination($event)"
+    >
+    </mat-paginator>
+  </div>
 </div>

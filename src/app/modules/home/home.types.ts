@@ -2,7 +2,7 @@ export interface IDesaparecido {
     id: number
     nome: string
     idade: number
-    sexo: string
+    sexo: Sexo
     vivo: boolean
     urlFoto: string
     ultimaOcorrencia: IUltimaOcorrencia
@@ -26,8 +26,8 @@ export interface IDesaparecido {
   export interface IFiltro {
     faixaIdadeInicial: number;
     faixaIdadeFinal: number;
-    sexo: number;
-    status: string;
+    sexo: Sexo;
+    status: StatusDesaparecido;
     nome: number;
   }
 
