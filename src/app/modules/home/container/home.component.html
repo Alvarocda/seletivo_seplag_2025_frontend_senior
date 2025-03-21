@@ -6,7 +6,7 @@
       @for (desaparecido of desaparecidos.content; track $index) {
       <mat-card class="max-w-96 w-full cursor-pointer">
         <div class="w-full">
-          <img [src]="desaparecido.urlFoto" class="w-full h-64 object-cover" />
+          <img [src]="desaparecido.urlFoto ?? 'assets/images/sem_foto.jpg'" class="w-full h-80 object-cover object-center" />
         </div>
 
         <!-- <div class="bg-gray-400 w-full h-56">

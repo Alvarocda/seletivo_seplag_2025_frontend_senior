@@ -4,7 +4,7 @@ export interface IDesaparecido {
     idade: number
     sexo: Sexo
     vivo: boolean
-    urlFoto: string
+    urlFoto?: string
     ultimaOcorrencia: IUltimaOcorrencia
   }
   
