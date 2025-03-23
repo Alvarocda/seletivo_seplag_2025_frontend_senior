@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
     handlePagination(event: PageEvent) {
-    this._facade.handlePagination(event);
+        this._facade.handlePagination(event);
     }
     ngOnDestroy(): void {
         this._isDestroyed$.next();
