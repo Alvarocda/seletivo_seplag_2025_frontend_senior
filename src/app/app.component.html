@@ -1,7 +1,7 @@
-<div class="min-h-screen min-w-screen flex flex-col">
-    <div class="h-32 bg-black w-full flex p-4 items-center justify-center">
+<div class="min-h-screen flex flex-col">
+    <div class="h-32 bg-black flex p-4 items-center justify-center">
         <div class="container flex justify-between items-center">
-            <div class="flex gap-4">
+            <div class="flex gap-4 cursor-pointer" routerLink="/" >
                 <img src="assets/images/pjc_logo.svg" class="h-24">
                 <div class="flex flex-col text-white items-start justify-center md:text-xl">
                     <p class="font-semibold">POLICIA JUDICIARIA CIVIL</p>
@@ -15,10 +15,14 @@
         </div>
         
     </div>
-    <div class="flex-1 overflow-y-auto h-full w-full bg-gray-50 flex" style="flex: 1;">
+    <div class="flex-1 overflow-y-auto h-full bg-gray-50 flex" style="flex: 1;">
         <div style="flex: 1;">
             <router-outlet></router-outlet>
         </div>        
+    </div>
+    <div class="h-20 bg-black flex flex-col justify-center items-center text-white">
+        <p class="font-semibold">SELETIVO SEPLAG 2025</p>
+        <p>FRONTEND SENIOR</p>
     </div>
 </div>
 
