@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IDesaparecido, ListaSexos } from '../../home.types';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home-card',
@@ -7,14 +8,16 @@ import { IDesaparecido, ListaSexos } from '../../home.types';
     standalone: false
 })
 
-export class HomeCardComponent implements OnInit {
+export class HomeCardComponent{
     listaSexos = ListaSexos;
 
     @Input({required: true})
-    desaparecido!: IDesaparecido
+    desaparecido!: IDesaparecido;
 
+    constructor(private _router: Router){}
 
-    constructor() { }
+    detalharDesaparecido() {
+        this._router.navigate(['detalhes-desaparecido', this.desaparecido.id])
+    }
 
-    ngOnInit() { }
 }
