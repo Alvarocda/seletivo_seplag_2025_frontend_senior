@@ -8,11 +8,11 @@
     </div>
   </div>
   } @else {
-  <div class="container md:mx-auto p-4">
-    <div class="flex flex-col md:flex-row">
+  <div class="container md:mx-auto p-4 flex flex-col">
+    <div class="flex flex-col lg:flex-row">
       <img
         [src]="pessoaDesaparecida.urlFoto"
-        class="rounded-md border-4 md:min-w-md"
+        class="rounded-md border-4 md:min-w-md max-h-96 md:max-h-[500px] object-cover object-center"
         [ngClass]="{
           'border-red-600': foiEncontrada === false,
           'border-teal-700': foiEncontrada
@@ -20,7 +20,7 @@
       />
       <div class="flex flex-col items-start justify-center">
         <div
-          class="font-semibold text-white p-1 -mt-1 md:mt-0 rounded-b-md md:rounded-b-none md:rounded-br-md md:rounded-tr-md text-2xl"
+          class="font-semibold text-white p-1 -mt-1 lg:mt-0 rounded-b-md lg:rounded-b-none lg:rounded-br-md lg:rounded-tr-md text-2xl"
           [ngClass]="{
             'bg-red-500': foiEncontrada === false,
             'bg-teal-700': foiEncontrada
@@ -28,7 +28,7 @@
         >
           @if (foiEncontrada) { LOCALIZADO } @else { DESAPARECIDO }
         </div>
-        <div class="p-2 clas flex flex-col">
+        <div class="p-4 clas flex flex-col">
           <div class="uppercase font-semibold text-2xl md:text-3xl">
             {{ pessoaDesaparecida.nome }}
           </div>
@@ -65,9 +65,24 @@
                 .informacao
             }}
           </p>
-          <p class="font-semibold text-red-500 text-lg md:text-2xl">
+          <p class="font-semibold text-red-500 text-lg md:text-xl">
             DESAPARECIDO HÁ {{ getDiasDesaparecido() + 1 }} DIAS!
           </p>
+        </div>
+        <div class="flex flex-col items-center justify-center w-full gap-1">
+          <p>Ajude compartilhando:</p>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row gap-1"
+          >
+            <app-btn-share-whatsapp
+              [pessoa]="pessoaDesaparecida"
+            ></app-btn-share-whatsapp>
+            @for (cartaz of pessoaDesaparecida.ultimaOcorrencia.listaCartaz;
+            track $index) {
+            <app-btn-download-cartaz [cartaz]="cartaz">
+            </app-btn-download-cartaz>
+            }
+          </div>
         </div>
       </div>
     </div>

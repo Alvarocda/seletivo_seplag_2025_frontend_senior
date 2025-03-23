@@ -1,0 +1,16 @@
+.instagram {
+    background: #833ab4;
+    background: linear-gradient(
+        to right,
+        #833ab4,#fd1d1d,#fcb045
+    );
+}
+
+.pdf {
+    background-color: #F40F02;
+}
+
+.file {
+    background-color: blue;
+    max-width: 40px;
+}

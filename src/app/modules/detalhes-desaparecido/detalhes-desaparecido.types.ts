@@ -27,5 +27,13 @@ export interface IOcorrenciaEntrevDesapDto {
 
 export interface IListaCartaz {
   urlCartaz: string;
-  tipoCartaz: string;
+  tipoCartaz: TipoCartaz;
 }
+
+export const TiposCartaz = {
+  INSTA_DESAPARECIDO: 'Instagram',
+  JPG_DESAPARECIDO: 'Cartaz',
+  PDF_DESAPARECIDO: 'PDF',
+};
+
+export type TipoCartaz = keyof typeof TiposCartaz;

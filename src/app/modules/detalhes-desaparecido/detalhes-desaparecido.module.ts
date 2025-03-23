@@ -6,6 +6,8 @@ import { routes } from './detalhes-desaparecido.routes';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
+import { BtnDownloadCartazComponent } from './componentes/btn-download-cartaz/btn-download-cartaz.component';
+import { BtnShareWhatsappComponent } from './componentes/btn-share-whatsapp/btn-share-whatsapp.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,11 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDividerModule,
   ],
   exports: [],
-  declarations: [DetalhesDesaparecidoComponent],
+  declarations: [
+    DetalhesDesaparecidoComponent,
+    BtnDownloadCartazComponent,
+    BtnShareWhatsappComponent,
+  ],
   providers: [],
 })
 export class DetalhesDesaparecidoModule {}

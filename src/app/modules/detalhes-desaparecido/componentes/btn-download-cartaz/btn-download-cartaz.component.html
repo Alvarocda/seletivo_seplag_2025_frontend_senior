@@ -1,0 +1,13 @@
+<div
+  class="rounded-lg overflow-clip flex cursor-pointer h-14"
+  (click)="baixarCartaz()"
+>
+  <div class="p-1" [ngClass]="css">
+    <img [src]="iconeBotao" />
+  </div>
+  <div
+    class="bg-neutral-800 text-white p-2 uppercase font-medium text-sm max-w-52 w-full flex items-center"
+  >
+    {{ tituloBotao }}
+  </div>
+</div>
