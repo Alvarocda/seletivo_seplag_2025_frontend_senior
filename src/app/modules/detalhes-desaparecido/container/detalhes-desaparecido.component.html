@@ -11,7 +11,7 @@
   <div class="container md:mx-auto p-4 flex flex-col">
     <div class="flex flex-col lg:flex-row">
       <img
-        [src]="pessoaDesaparecida.urlFoto"
+        [src]="pessoaDesaparecida.urlFoto ?? 'assets/images/sem_foto.jpg'"
         class="rounded-md border-4 md:min-w-md max-h-96 md:max-h-[500px] object-cover object-center"
         [ngClass]="{
           'border-red-600': foiEncontrada === false,
@@ -43,41 +43,45 @@
           <p>
             <span class="font-semibold">Data: </span>
             {{
-              pessoaDesaparecida.ultimaOcorrencia.dtDesaparecimento
+              pessoaDesaparecida.ultimaOcorrencia?.dtDesaparecimento
                 | date : "dd/MM/yyyy"
             }}
           </p>
           <p>
             <span class="font-semibold">Local:</span>
-            {{ pessoaDesaparecida.ultimaOcorrencia.localDesaparecimentoConcat }}
+            {{
+              pessoaDesaparecida.ultimaOcorrencia?.localDesaparecimentoConcat
+            }}
           </p>
           <p>
             <span class="font-semibold">Vestimenta:</span>
             {{
-              pessoaDesaparecida.ultimaOcorrencia.ocorrenciaEntrevDesapDTO
-                .vestimentasDesaparecido
+              pessoaDesaparecida.ultimaOcorrencia?.ocorrenciaEntrevDesapDTO
+                ?.vestimentasDesaparecido
             }}
           </p>
           <p>
             <span class="font-semibold">Informações adicionais:</span>
             {{
-              pessoaDesaparecida.ultimaOcorrencia.ocorrenciaEntrevDesapDTO
-                .informacao
+              pessoaDesaparecida.ultimaOcorrencia?.ocorrenciaEntrevDesapDTO
+                ?.informacao
             }}
           </p>
           <p class="font-semibold text-red-500 text-lg md:text-xl">
             DESAPARECIDO HÁ {{ getDiasDesaparecido() + 1 }} DIAS!
           </p>
         </div>
-        <div class="flex flex-col items-center justify-center w-full gap-1">
+        <div
+          class="flex flex-col items-center justify-center w-full gap-1 px-4"
+        >
           <p>Ajude compartilhando:</p>
           <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row gap-1"
+            class="grid grid-cols-1 sm:grid-cols-2 xl:flex xl:flex-row gap-1"
           >
             <app-btn-share-whatsapp
               [pessoa]="pessoaDesaparecida"
             ></app-btn-share-whatsapp>
-            @for (cartaz of pessoaDesaparecida.ultimaOcorrencia.listaCartaz;
+            @for (cartaz of pessoaDesaparecida.ultimaOcorrencia?.listaCartaz;
             track $index) {
             <app-btn-download-cartaz [cartaz]="cartaz">
             </app-btn-download-cartaz>

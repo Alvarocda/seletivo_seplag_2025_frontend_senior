@@ -47,7 +47,7 @@ export class DetalhesDesaparecidoComponent implements OnInit, OnDestroy {
 
   getDiasDesaparecido(): number {
     const dataDesaparecimento = new Date(
-      this.pessoaDesaparecida.ultimaOcorrencia.dtDesaparecimento
+      this.pessoaDesaparecida.ultimaOcorrencia!.dtDesaparecimento
     );
     const dataAtual = new Date();
     const diferencaEmMilissegundos =

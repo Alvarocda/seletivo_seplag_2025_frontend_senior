@@ -6,8 +6,8 @@ export interface IPessoa {
   idade: number;
   sexo: Sexo;
   vivo: boolean;
-  urlFoto: string;
-  ultimaOcorrencia: IUltimaOcorrencia;
+  urlFoto?: string;
+  ultimaOcorrencia?: IUltimaOcorrencia;
 }
 
 export interface IUltimaOcorrencia {
