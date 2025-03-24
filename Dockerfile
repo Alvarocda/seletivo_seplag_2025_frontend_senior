@@ -2,7 +2,7 @@ FROM node:22 as build
 
 WORKDIR /app
 COPY . /app
-# RUN npm i @angular/cli@19
+
 RUN npm i
 RUN npm run build
 
