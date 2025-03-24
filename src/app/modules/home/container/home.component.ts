@@ -5,13 +5,19 @@ import {
   IPaginacaoRequest,
   IResultadoPaginado,
 } from '../../shared/paginacao/paginacao.types';
-import { IDesaparecido, IFiltro, ListaSexos } from '../home.types';
+import {
+  IDesaparecido,
+  IEstatisticas,
+  IFiltro,
+  ListaSexos,
+} from '../home.types';
 import { PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.component.html',
+  styleUrls: ['home.component.css'],
   standalone: false,
 })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -23,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   desaparecidos: IResultadoPaginado<IDesaparecido> =
     {} as IResultadoPaginado<IDesaparecido>;
 
+  estatisticas?: IEstatisticas;
   formBusca!: FormGroup;
 
   constructor(private _facade: HomeFacade, private _fb: FormBuilder) {}
@@ -52,6 +59,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.desaparecidos = desaparecidos;
       });
 
+    this._facade.estatisticas$
+      .pipe(takeUntil(this._isDestroyed$))
+      .subscribe((estatisticas: IEstatisticas) => {
+        this.estatisticas = estatisticas;
+      });
+
     this.formBusca = this._fb.group({
       faixaIdadeInicial: new FormControl(),
       faixaIdadeFinal: new FormControl(),
@@ -61,6 +74,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this._facade.carregarDesaparecidos();
+    this._facade.carregarEstatisticas();
   }
 
   handlePagination(event: PageEvent) {

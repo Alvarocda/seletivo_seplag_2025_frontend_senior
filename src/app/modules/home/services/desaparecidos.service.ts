@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
-import { IDesaparecido } from '../home.types';
+import { IDesaparecido, IEstatisticas } from '../home.types';
 import { IResultadoPaginado } from '../../shared/paginacao/paginacao.types';
 @Injectable({ providedIn: 'root' })
 export class DesaparecidosService {
@@ -15,5 +15,10 @@ export class DesaparecidosService {
     return this.httpClient.get<IResultadoPaginado<IDesaparecido>>(url, {
       params: params,
     });
+  }
+
+  carregarEstatisticas(): Observable<IEstatisticas> {
+    const url = `${environment.abitusUrl}v1/pessoas/aberto/estatistico`;
+    return this.httpClient.get<IEstatisticas>(url);
   }
 }

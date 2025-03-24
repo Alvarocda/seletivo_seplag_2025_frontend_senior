@@ -4,7 +4,7 @@ import {
   IPaginacaoRequest,
   IResultadoPaginado,
 } from '../shared/paginacao/paginacao.types';
-import { IDesaparecido, IFiltro } from './home.types';
+import { IDesaparecido, IEstatisticas, IFiltro } from './home.types';
 import { HomeState } from './state/home.state';
 import { DesaparecidosService } from './services/desaparecidos.service';
 import { HttpParams } from '@angular/common/http';
@@ -16,6 +16,7 @@ export class HomeFacade {
   desaparecidos$: Observable<IResultadoPaginado<IDesaparecido>>;
   carregando$: Observable<boolean>;
   filtro$: Observable<IFiltro>;
+  estatisticas$: Observable<IEstatisticas>;
 
   constructor(
     private _state: HomeState,
@@ -25,12 +26,22 @@ export class HomeFacade {
     this.desaparecidos$ = this._state.desaparecidos$;
     this.carregando$ = this._state.carregando$;
     this.filtro$ = this._state.filtroBusca$;
+    this.estatisticas$ = this._state.estatisticas$;
   }
 
   setarFiltro(filtro: IFiltro): void {
     this._state.filtroBusca = filtro;
     this._state.paginacao = { ...this._state.paginacao, pagina: 0 };
     this.carregarDesaparecidos();
+  }
+
+  carregarEstatisticas(): void {
+    this._desaparecidosService.carregarEstatisticas().subscribe({
+      next: (res: IEstatisticas) => {
+        this._state.estatisticas = res;
+      },
+      error: (err) => {},
+    });
   }
 
   carregarDesaparecidos(): void {

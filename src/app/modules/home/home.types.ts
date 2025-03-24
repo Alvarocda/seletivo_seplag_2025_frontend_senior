@@ -41,6 +41,11 @@ export const ListaStatusDesaparecido = {
   DESAPARECIDO: 'Desaparecido',
 };
 
+export interface IEstatisticas {
+  quantPessoasDesaparecidas: number;
+  quantPessoasEncontradas: number;
+}
+
 export type Sexo = keyof typeof ListaSexos;
 
 export type StatusDesaparecido = keyof typeof ListaStatusDesaparecido;
