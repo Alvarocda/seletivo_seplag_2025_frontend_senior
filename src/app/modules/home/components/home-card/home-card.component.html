@@ -1,29 +1,33 @@
-<mat-card class="max-w-96 w-full cursor-pointer h-full" (click)="detalharDesaparecido()">
-    <div class="w-full">
-      <img [src]="desaparecido.urlFoto ?? 'assets/images/sem_foto.jpg'" class="w-full h-80 object-cover object-center" />
-    </div>
+<mat-card
+  class="max-w-96 w-full cursor-pointer h-full"
+  (click)="detalharDesaparecido()"
+>
+  <div class="w-full">
+    <img
+      [src]="desaparecido.urlFoto ?? 'assets/images/sem_foto.jpg'"
+      class="w-full h-80 object-cover object-center"
+      onerror="this.src='assets/images/sem_foto.jpg'"
+    />
+  </div>
 
-    <!-- <div class="bg-gray-400 w-full h-56">
+  <!-- <div class="bg-gray-400 w-full h-56">
           </div>     -->
-    <mat-card-title-group class="p-2">
-      <mat-card-title>
-        {{ desaparecido.nome }}
-      </mat-card-title>
-    </mat-card-title-group>
-    <mat-card-content class="-m-2 mt-2">
-      <p>
-        {{ desaparecido.idade }} Anos, {{ listaSexos[desaparecido.sexo] }}
-      </p>
-      <p>
-        <span>Data:</span>
-        {{
-          desaparecido.ultimaOcorrencia.dtDesaparecimento
-            | date : "dd/MM/yyyy"
-        }}
-      </p>
-      <p>
-        <span>Local:</span>
-        {{ desaparecido.ultimaOcorrencia.localDesaparecimentoConcat }}
-      </p>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-title-group class="p-2">
+    <mat-card-title>
+      {{ desaparecido.nome }}
+    </mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content class="-m-2 mt-2">
+    <p>{{ desaparecido.idade }} Anos, {{ listaSexos[desaparecido.sexo] }}</p>
+    <p>
+      <span>Data:</span>
+      {{
+        desaparecido.ultimaOcorrencia.dtDesaparecimento | date : "dd/MM/yyyy"
+      }}
+    </p>
+    <p>
+      <span>Local:</span>
+      {{ desaparecido.ultimaOcorrencia.localDesaparecimentoConcat }}
+    </p>
+  </mat-card-content>
+</mat-card>
