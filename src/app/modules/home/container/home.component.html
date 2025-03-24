@@ -1,35 +1,97 @@
 <div class="bg-gray-200 flex flex-col items-center justify-center p-8 h-full">
-  
   @if (carregando) {
-    <div class="flex flex-col gap-3 items-center justify-center">
-      <mat-spinner></mat-spinner>
-      <div class="text-center">
-        <p>Aguarde</p>
-        <p>Carregando</p>
-      </div>
-      
+  <div class="flex flex-col gap-3 items-center justify-center">
+    <mat-spinner></mat-spinner>
+    <div class="text-center">
+      <p>Aguarde</p>
+      <p>Carregando</p>
     </div>
+  </div>
   }
-  
-    
-  
+
+  <div class="bg-white p-4 my-4 flex flex-col items-center rounded-md">
+    <div class="text-center py-4 flex flex-col">
+      <p class="text-3xl font-semibold uppercase">Busca</p>
+      <p class="text-center">
+        Digite as informações conhecidas para uma busca mais precisa
+      </p>
+    </div>
+    <form [formGroup]="formBusca" class="max-w-xs sm:max-w-full">
+      <mat-form-field class="w-full">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" />
+      </mat-form-field>
+      <div>Faixa Etária:</div>
+      <div class="flex gap-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Mínima</mat-label>
+          <input
+            matInput
+            formControlName="faixaIdadeInicial"
+            inputmode="numeric"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Máxima</mat-label>
+          <input
+            matInput
+            formControlName="faixaIdadeFinal"
+            inputmode="numeric"
+          />
+        </mat-form-field>
+      </div>
+      <div class="flex flex-row justify-around">
+        <mat-radio-group class="flex flex-col" formControlName="sexo">
+          <mat-label>Sexo</mat-label>
+          <mat-radio-button value="MASCULINO">Masculino</mat-radio-button>
+          <mat-radio-button value="FEMININO">Feminino</mat-radio-button>
+        </mat-radio-group>
+        <mat-radio-group class="flex flex-col" formControlName="status">
+          <mat-label>Status</mat-label>
+          <mat-radio-button value="DESAPARECIDO">Desaparecido</mat-radio-button>
+          <mat-radio-button value="LOCALIZADO">Localizado</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </form>
+
+    <div class="flex items-center justify-center gap-2">
+      <button mat-flat-button class="aviso" (click)="limparFormBusca()">
+        <mat-icon>clear</mat-icon> Limpar
+      </button>
+      <button mat-button class="sucesso" (click)="buscar()">
+        <mat-icon>search</mat-icon> Buscar
+      </button>
+    </div>
+  </div>
+
   <div>
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-4"
     >
       @for (desaparecido of desaparecidos.content; track $index) {
-        <app-home-card [desaparecido]="desaparecido" class="w-full"></app-home-card>
-      } @empty {
-      <div>Nenhum resultado encontrado</div>
+      <app-home-card
+        [desaparecido]="desaparecido"
+        class="w-full"
+      ></app-home-card>
       }
     </div>
-    <mat-paginator
-      class="w-full mt-4"
-      [length]="desaparecidos.totalElements"
-      [pageSizeOptions]="[20,  50, 100]"
-      aria-label="Selecione uma página"
-      (page)="handlePagination($event)"
-    >
-    </mat-paginator>
   </div>
+  @if (desaparecidos.numberOfElements === 0) {
+  <div class="flex flex-col items-center justify-center text-center">
+    <img src="assets/images/Search-rafiki.svg" class="max-w-80" />
+    <p class="text-2xl font-semibold">Nenhum resultado encontrado!</p>
+    <p class="font-medium text-lg">
+      Por favor, verifique os parâmetros da busca e tente novamente...
+    </p>
+  </div>
+  }
+
+  <mat-paginator
+    class="w-full mt-4"
+    [length]="desaparecidos.totalElements"
+    [pageSizeOptions]="[20, 50, 100]"
+    aria-label="Selecione uma página"
+    (page)="handlePagination($event)"
+  >
+  </mat-paginator>
 </div>

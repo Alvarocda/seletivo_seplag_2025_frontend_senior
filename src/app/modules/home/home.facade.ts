@@ -12,7 +12,6 @@ import { PageEvent } from '@angular/material/paginator';
 
 @Injectable({ providedIn: 'root' })
 export class HomeFacade {
-  
   paginacao$: Observable<IPaginacaoRequest>;
   desaparecidos$: Observable<IResultadoPaginado<IDesaparecido>>;
   carregando$: Observable<boolean>;
@@ -30,11 +29,9 @@ export class HomeFacade {
 
   setarFiltro(filtro: IFiltro): void {
     this._state.filtroBusca = filtro;
+    this._state.paginacao = { ...this._state.paginacao, pagina: 0 };
+    this.carregarDesaparecidos();
   }
-
-  // handlePagination(event): void {
-
-  // }
 
   carregarDesaparecidos(): void {
     this._state.carregando = true;
@@ -54,27 +51,35 @@ export class HomeFacade {
     let params = new HttpParams()
       .set('pagina', this._state.paginacao.pagina.toString())
       .set('porPagina', this._state.paginacao.porPagina.toString());
-    if(this._state.filtroBusca.faixaIdadeFinal) {
-        params = params.set('faixaIdadeInicial', this._state.filtroBusca.faixaIdadeInicial.toString())
+    if (this._state.filtroBusca.faixaIdadeFinal) {
+      params = params.set(
+        'faixaIdadeInicial',
+        this._state.filtroBusca.faixaIdadeInicial.toString()
+      );
     }
-    if(this._state.filtroBusca.faixaIdadeFinal) {
-        params = params.set('faixaIdadeFinal', this._state.filtroBusca.faixaIdadeFinal.toString())
+    if (this._state.filtroBusca.faixaIdadeFinal) {
+      params = params.set(
+        'faixaIdadeFinal',
+        this._state.filtroBusca.faixaIdadeFinal.toString()
+      );
     }
-    if(this._state.filtroBusca.sexo) {
-        params = params.set('sexo', this._state.filtroBusca.sexo.toString())
+    if (this._state.filtroBusca.sexo) {
+      params = params.set('sexo', this._state.filtroBusca.sexo.toString());
     }
-    if(this._state.filtroBusca.status) {
-        params = params.set('status', this._state.filtroBusca.status.toString())
+    if (this._state.filtroBusca.status) {
+      params = params.set('status', this._state.filtroBusca.status.toString());
     }
-    if(this._state.filtroBusca.nome) {
-        params = params.set('nome', this._state.filtroBusca.nome.toString())
+    if (this._state.filtroBusca.nome) {
+      params = params.set('nome', this._state.filtroBusca.nome.toString());
     }
     return params;
   }
 
-
   handlePagination(event: PageEvent) {
-    this._state.paginacao = {pagina: event.pageIndex, porPagina: event.pageSize};
+    this._state.paginacao = {
+      pagina: event.pageIndex,
+      porPagina: event.pageSize,
+    };
     this.carregarDesaparecidos();
-}
+  }
 }
