@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,8 +7,9 @@ import {
 } from '@angular/forms';
 import { DetalhesDesaparecidoFacade } from '../../detalhes-desaparecido.facade';
 import { Subject, takeUntil } from 'rxjs';
-import { MatDialogRef } from '@angular/material/dialog';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { IInformacao, IPessoa } from '../../detalhes-desaparecido.types';
 @Component({
   selector: 'app-adicionar-informacoes-modal',
   templateUrl: 'adicionar-informacoes-modal.component.html',
@@ -21,6 +22,7 @@ export class AdicionarInformacoesModalComponent implements OnInit, OnDestroy {
   enviandoInformacao: boolean = false;
   anexos: File[] = [];
 
+  private pessoa: IPessoa = inject<IPessoa>(MAT_DIALOG_DATA);
   private _fb: FormBuilder = inject(FormBuilder);
   private _facade: DetalhesDesaparecidoFacade = inject(
     DetalhesDesaparecidoFacade
@@ -29,6 +31,8 @@ export class AdicionarInformacoesModalComponent implements OnInit, OnDestroy {
   extensoesAceitas = '.png, .jpg, .jpeg';
   maxFileSize = 3 * 1024 * 1024; //Tamanho máximo do anexo é 3mb
   formInformacoes!: FormGroup;
+
+  constructor(private _toastr: ToastrService) {}
 
   ngOnInit() {
     this._facade.enviandoInformacao$
@@ -44,9 +48,14 @@ export class AdicionarInformacoesModalComponent implements OnInit, OnDestroy {
     for (let i = 0; i < event.target.files.length; i++) {
       const file = event.target.files[i] as File;
       if (file) {
-        if (file.size < this.maxFileSize) {
-          this.anexos = [...this.anexos, file];
+        if (file.size > this.maxFileSize) {
+          this._toastr.warning(
+            `O tamanho do arquivo ${file.name} excede o limite máximo de 3MB.`,
+            'Tamanho máximo excedido'
+          );
+          return;
         }
+        this.anexos = [...this.anexos, file];
       }
     }
   }
@@ -56,10 +65,11 @@ export class AdicionarInformacoesModalComponent implements OnInit, OnDestroy {
   }
 
   enviarInformacao(): void {
-    this.enviandoInformacao = true;
-    setTimeout(() => {
-      this.enviandoInformacao = false;
-    }, 5000);
+    if (this.formInformacoes.valid) {
+      const informacao = this.formInformacoes.value as IInformacao;
+      informacao.files = this.anexos;
+      informacao.ocoId = this.pessoa.ultimaOcorrencia!.ocoId;
+    }
   }
 
   ngOnDestroy(): void {

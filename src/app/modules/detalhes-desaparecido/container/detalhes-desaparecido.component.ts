@@ -60,7 +60,7 @@ export class DetalhesDesaparecidoComponent implements OnInit, OnDestroy {
   }
 
   abrirModalAdicionarInformacoes(): void {
-    this._facade.abrirModalAdicionarInformacoes();
+    this._facade.abrirModalAdicionarInformacoes(this.pessoaDesaparecida);
   }
 
   ngOnDestroy(): void {

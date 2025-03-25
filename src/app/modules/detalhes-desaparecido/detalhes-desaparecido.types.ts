@@ -41,6 +41,6 @@ export interface IInformacao {
   descricao: string;
   data: Date;
   ocoId: number;
-  file: File;
+  files: File[];
 }
 export type TipoCartaz = keyof typeof TiposCartaz;

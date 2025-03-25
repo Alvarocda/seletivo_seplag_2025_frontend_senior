@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
 import { TabelaAnexosComponent } from './componentes/tabela-anexos/tabela-anexos.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { TabelaAnexosComponent } from './componentes/tabela-anexos/tabela-anexos
     ReactiveFormsModule,
     MatDatepickerModule,
     MatTableModule,
+    ToastrModule.forRoot(),
   ],
   exports: [],
   declarations: [

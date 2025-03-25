@@ -39,8 +39,9 @@ export class DetalhesDesaparecidoFacade {
       });
   }
 
-  abrirModalAdicionarInformacoes() {
+  abrirModalAdicionarInformacoes(pessoaDesaparecida: IPessoa) {
     this._dialogService.open(AdicionarInformacoesModalComponent, {
+      data: pessoaDesaparecida,
       maxWidth: '600px',
       width: '100%',
       panelClass: 'm-4',
