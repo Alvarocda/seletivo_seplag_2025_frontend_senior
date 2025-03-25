@@ -13,18 +13,13 @@
 
   }
 
-  <p class="text-center text-xl font-semibold py-4">
+  <p class="text-center text-xl font-semibold py-2">
     Formulário de Informações
   </p>
-  <mat-dialog-content class="w-full">
+  <mat-dialog-content>
     <form [formGroup]="formInformacoes" class="flex flex-col w-full px-4">
-      <mat-form-field class="w-full">
-        <mat-label>Informação</mat-label>
-        <textarea matInput formControlName="informacao"></textarea>
-        <mat-error>Esse campo é obrigatório</mat-error>
-      </mat-form-field>
       <mat-form-field>
-        <mat-label>Descrição</mat-label>
+        <mat-label>Informação</mat-label>
         <textarea matInput formControlName="informacao"></textarea>
         <mat-error>Esse campo é obrigatório</mat-error>
       </mat-form-field>
@@ -37,6 +32,32 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      <div>
+        <input
+          #fileInput
+          type="file"
+          (change)="handleAddFile($event)"
+          multiple
+          hidden
+          [accept]="extensoesAceitas"
+        />
+        <button
+          type="button"
+          (click)="fileInput.click()"
+          class="text-white px-6 py-3 bg-green-800 rounded-lg font-medium cursor-pointer"
+        >
+          Adicionar anexo
+        </button>
+        <br />
+        <mat-hint class="font-medium text-xs">PNG, JPG, JPEG - 3MB</mat-hint>
+        <br />
+        @if (anexos.length) {
+        <app-tabela-anexos
+          [anexos]="anexos"
+          (onAnexoRemovido)="handleRemoveFile($event)"
+        ></app-tabela-anexos>
+        }
+      </div>
     </form>
   </mat-dialog-content>
   <mat-dialog-actions class="flex gap-2 items-end justify-end px-4 pb-4">

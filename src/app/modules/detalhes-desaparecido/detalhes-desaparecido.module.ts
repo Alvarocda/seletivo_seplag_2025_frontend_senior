@@ -14,6 +14,8 @@ import { AdicionarInformacoesModalComponent } from './componentes/adicionar-info
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTableModule } from '@angular/material/table';
+import { TabelaAnexosComponent } from './componentes/tabela-anexos/tabela-anexos.component';
 
 @NgModule({
   imports: [
@@ -26,6 +28,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatTableModule,
   ],
   exports: [],
   declarations: [
@@ -33,6 +36,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     BtnDownloadCartazComponent,
     BtnShareWhatsappComponent,
     AdicionarInformacoesModalComponent,
+    TabelaAnexosComponent,
   ],
   providers: [],
 })

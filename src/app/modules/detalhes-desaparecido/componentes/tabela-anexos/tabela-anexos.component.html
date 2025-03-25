@@ -1,0 +1,36 @@
+<p class="pt-2 font-semibold">Arquivos Anexados:</p>
+<table mat-table [dataSource]="anexos" class="mat-elevation-z8">
+  <ng-container matColumnDef="arquivo">
+    <th mat-header-cell *matHeaderCellDef>Arquivo</th>
+    <td mat-cell *matCellDef="let element" class="max-w-md overflow-clip">
+      {{ element.name }}
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="tamanho">
+    <th mat-header-cell *matHeaderCellDef>Tamanho</th>
+    <td mat-cell *matCellDef="let element">
+      {{ (element.size / 1000).toFixed(0) }} Kb
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef>Ação</th>
+    <td mat-cell *matCellDef="let element">
+      <p
+        class="text-red-500 font-semibold cursor-pointer"
+        (click)="handleRemoveFile(element)"
+      >
+        X
+      </p>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    class="max-w-xs overflow-clip"
+  ></tr>
+</table>
