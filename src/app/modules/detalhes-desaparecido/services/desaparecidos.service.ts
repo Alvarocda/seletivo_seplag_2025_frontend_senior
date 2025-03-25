@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
-import { IPessoa } from '../detalhes-desaparecido.types';
+import { IInformacao, IPessoa } from '../detalhes-desaparecido.types';
 
 @Injectable({ providedIn: 'root' })
 export class DesaparecidosService {
@@ -13,8 +13,19 @@ export class DesaparecidosService {
     return this._httpClient.get<IPessoa>(url);
   }
 
-  enviarInformacoes(): Observable<any> {
-    const url = `${environment.abitusUrl}v1/contato`;
-    return this._httpClient.post(url, {});
+  enviarInformacoes(informacao: IInformacao): Observable<any> {
+    const url = `${environment.abitusUrl}v1/ocorrencias/informacoes-desaparecido`;
+    let params = new HttpParams()
+      .set('informacao', informacao.informacao)
+      .set('descricao', '')
+      .set('data', informacao.data.toString())
+      .set('ocoId', informacao.ocoId);
+    let formData = new FormData();
+    if (informacao.files?.length) {
+      informacao.files.forEach((file: File) => {
+        formData.append('files', file);
+      });
+    }
+    return this._httpClient.post(url, formData, { params: params });
   }
 }

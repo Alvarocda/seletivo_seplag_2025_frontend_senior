@@ -39,7 +39,7 @@ export const TiposCartaz = {
 export interface IInformacao {
   informacao: string;
   descricao: string;
-  data: Date;
+  data: string;
   ocoId: number;
   files: File[];
 }

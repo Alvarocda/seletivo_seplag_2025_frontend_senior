@@ -12,6 +12,7 @@ import {
 } from '@angular/material/core';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,10 +23,10 @@ export const appConfig: ApplicationConfig = {
       provide: MatPaginatorIntl,
       useClass: CustomPaginatorIntl,
     },
+    DatePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     provideNativeDateAdapter(),
     provideAnimations(),
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-
     provideToastr(),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

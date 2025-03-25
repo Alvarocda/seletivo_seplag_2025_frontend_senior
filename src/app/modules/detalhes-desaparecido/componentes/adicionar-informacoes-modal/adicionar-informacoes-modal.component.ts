@@ -10,6 +10,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { IInformacao, IPessoa } from '../../detalhes-desaparecido.types';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-adicionar-informacoes-modal',
   templateUrl: 'adicionar-informacoes-modal.component.html',
@@ -27,12 +28,11 @@ export class AdicionarInformacoesModalComponent implements OnInit, OnDestroy {
   private _facade: DetalhesDesaparecidoFacade = inject(
     DetalhesDesaparecidoFacade
   );
-
   extensoesAceitas = '.png, .jpg, .jpeg';
   maxFileSize = 3 * 1024 * 1024; //Tamanho máximo do anexo é 3mb
   formInformacoes!: FormGroup;
 
-  constructor(private _toastr: ToastrService) {}
+  constructor(private _toastr: ToastrService, private _datePipe: DatePipe) {}
 
   ngOnInit() {
     this._facade.enviandoInformacao$
@@ -69,6 +69,11 @@ export class AdicionarInformacoesModalComponent implements OnInit, OnDestroy {
       const informacao = this.formInformacoes.value as IInformacao;
       informacao.files = this.anexos;
       informacao.ocoId = this.pessoa.ultimaOcorrencia!.ocoId;
+      informacao.data = this._datePipe.transform(
+        informacao.data,
+        'yyyy-MM-dd'
+      )!;
+      this._facade.enviarInformacoes(informacao, this.dialogRef);
     }
   }
 
