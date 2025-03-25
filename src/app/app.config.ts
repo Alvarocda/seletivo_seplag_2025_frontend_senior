@@ -6,7 +6,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginatorIntl } from './modules/core/paginator-config/paginator.intl';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import {
+  MAT_DATE_LOCALE,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -21,6 +24,7 @@ export const appConfig: ApplicationConfig = {
     },
     provideNativeDateAdapter(),
     provideAnimations(),
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
 
     provideToastr(),
     {
