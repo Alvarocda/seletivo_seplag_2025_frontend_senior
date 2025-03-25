@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DetalhesDesaparecidoFacade } from '../detalhes-desaparecido.facade';
 import { Subject, takeUntil } from 'rxjs';
 import { ListaSexos } from '../../home/home.types';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-detalhes-desaparecido',
@@ -56,6 +57,10 @@ export class DetalhesDesaparecidoComponent implements OnInit, OnDestroy {
       diferencaEmMilissegundos / (1000 * 60 * 60 * 24)
     );
     return diferencaEmDias;
+  }
+
+  abrirModalAdicionarInformacoes(): void {
+    this._facade.abrirModalAdicionarInformacoes();
   }
 
   ngOnDestroy(): void {

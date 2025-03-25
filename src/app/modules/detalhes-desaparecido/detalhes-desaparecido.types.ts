@@ -36,4 +36,11 @@ export const TiposCartaz = {
   PDF_DESAPARECIDO: 'PDF',
 };
 
+export interface IInformacao {
+  informacao: string;
+  descricao: string;
+  data: Date;
+  ocoId: number;
+  file: File;
+}
 export type TipoCartaz = keyof typeof TiposCartaz;

@@ -1,0 +1,60 @@
+<div class="bg-white rounded-md w-full relative">
+  @if (enviandoInformacao) {
+  <div
+    class="absolute h-full w-full bg-neutral-500 flex flex-col opacity-50 justify-center items-center z-10"
+  ></div>
+  <div
+    class="flex flex-col items-center justify-center absolute z-30 w-full h-full"
+  >
+    <mat-spinner></mat-spinner>
+    <p>Enviando informações</p>
+    <p>Por favor, aguarde</p>
+  </div>
+
+  }
+
+  <p class="text-center text-xl font-semibold py-4">
+    Formulário de Informações
+  </p>
+  <mat-dialog-content class="w-full">
+    <form [formGroup]="formInformacoes" class="flex flex-col w-full px-4">
+      <mat-form-field class="w-full">
+        <mat-label>Informação</mat-label>
+        <textarea matInput formControlName="informacao"></textarea>
+        <mat-error>Esse campo é obrigatório</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <textarea matInput formControlName="informacao"></textarea>
+        <mat-error>Esse campo é obrigatório</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="flex gap-2 items-end justify-end px-4 pb-4">
+    <button
+      mat-flat-button
+      class="erro"
+      [disabled]="enviandoInformacao"
+      mat-dialog-close
+    >
+      Cancelar
+    </button>
+    <button
+      mat-flat-button
+      class="sucesso"
+      [disabled]="enviandoInformacao"
+      (click)="enviarInformacao()"
+    >
+      Enviar
+    </button>
+  </mat-dialog-actions>
+</div>

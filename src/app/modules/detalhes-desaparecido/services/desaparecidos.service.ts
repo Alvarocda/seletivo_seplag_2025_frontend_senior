@@ -12,4 +12,9 @@ export class DesaparecidosService {
     const url = `${environment.abitusUrl}v1/pessoas/${id}`;
     return this._httpClient.get<IPessoa>(url);
   }
+
+  enviarInformacoes(): Observable<any> {
+    const url = `${environment.abitusUrl}v1/contato`;
+    return this._httpClient.post(url, {});
+  }
 }

@@ -6,6 +6,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginatorIntl } from './modules/core/paginator-config/paginator.intl';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +18,8 @@ export const appConfig: ApplicationConfig = {
       provide: MatPaginatorIntl,
       useClass: CustomPaginatorIntl,
     },
+    provideNativeDateAdapter(),
+
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {
