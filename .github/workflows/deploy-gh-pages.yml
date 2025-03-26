@@ -19,6 +19,7 @@ jobs:
       - name: Install and Build
         run: |
           npm i
+          npm i @angular/cli:19.2.4
           ng build --output-path docs --base-href /seletivo_seplag_2025_frontend_senior/
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
