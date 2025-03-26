@@ -19,13 +19,14 @@ jobs:
       - name: Limpar Cache npm
         run: npm cache clean --force
 
+      - name: Instalar Dependencias
+        run: npm ci
+
       - name: Instalar o Angular CLI
         run: npm install @angular/cli@19
 
-      - name: Install and Build
-        run: |
-          npm ci
-          ng build --output-path docs --base-href /seletivo_seplag_2025_frontend_senior/
+      - name: Build
+        run: ng build --output-path docs --base-href /seletivo_seplag_2025_frontend_senior/
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
