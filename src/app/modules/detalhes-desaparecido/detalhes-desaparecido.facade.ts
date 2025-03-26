@@ -1,18 +1,20 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { DesaparecidosService } from './services/desaparecidos.service';
 import { Observable } from 'rxjs';
 import { IInformacao, IPessoa } from './detalhes-desaparecido.types';
 import { DetalhesDesaparecidoState } from './state/detalhes-desaparecido.state';
-import { Dialog } from '@angular/cdk/dialog';
 import { AdicionarInformacoesModalComponent } from './componentes/adicionar-informacoes-modal/adicionar-informacoes-modal.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class DetalhesDesaparecidoFacade {
   carregando$: Observable<boolean>;
   pessoaDesaparecida$: Observable<IPessoa>;
   enviandoInformacao$: Observable<boolean>;
+
+  private _router = inject(Router);
 
   constructor(
     private _desaparecidosService: DesaparecidosService,
@@ -34,9 +36,13 @@ export class DetalhesDesaparecidoFacade {
           this._state.pessoaDesaparecida = pessoa;
           this._state.carregando = false;
         },
-        error: (error: any) => {
-          console.error(error);
+        error: () => {
+          this._toastrService.error(
+            'Falha ao carregar detalhes do desaparecido',
+            'Erro'
+          );
           this._state.carregando = false;
+          this._router.navigate(['/']);
         },
       });
   }
