@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --output-path docs2 --base-href /seletivo_seplag_2025_frontend_senior/",
+    "build": "ng build --output-path docs --base-href /seletivo_seplag_2025_frontend_senior/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
