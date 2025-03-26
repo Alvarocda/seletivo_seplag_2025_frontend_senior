@@ -49,7 +49,8 @@
 				"mhutchie.git-graph",
 				"esbenp.prettier-vscode",
 				"cyrilletuzi.angular-schematics",
-				"Mikael.Angular-BeastCode"
+				"Mikael.Angular-BeastCode",
+				"github.vscode-github-actions"
 			]
 		}
 	}
