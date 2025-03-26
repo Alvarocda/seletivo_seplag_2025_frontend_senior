@@ -63,22 +63,22 @@ Com o docker e extensão instalados
 
 ### Homepage:
 
-- ![alt text](docs/readme/image-3.png)
+- ![alt text](readme-docs/image-3.png)
 
-- ![alt text](docs/readme/image-1.png)
+- ![alt text](readme-docs/image-1.png)
 
 ### Detalhes do Desaparecido:
 
-- ![alt text](docs/readme/image-2.png)
+- ![alt text](readme-docs/image-2.png)
 
 ### Envio de informações
 
-- ![alt text](docs/readme/image-4.png)
+- ![alt text](readme-docs/image-4.png)
 
 ## Mobile (Responsivo)
 
-![alt text](docs/readme/image-1-mobile.png)
+![alt text](readme-docs/image-1-mobile.png)
 
-![alt text](docs/readme/image-2-mobile.png)
+![alt text](readme-docs/image-2-mobile.png)
 
-![alt text](docs/readme/image-3-mobile.png)
+![alt text](readme-docs/image-3-mobile.png)
