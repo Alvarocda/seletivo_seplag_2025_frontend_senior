@@ -1,59 +1,84 @@
-# Seletivo
+## PROCESSO SELETIVO SEPLAG 2025
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+### VAGA: FRONTEND SENIOR
 
-## Development server
+### DADOS DO PARTICIPANTE:
 
-To start a local development server, run:
+Nome: Álvaro Claro dos Anjos  
+CPF: 047.179.541-06  
+Vaga: Frontend Senior
 
-```bash
-ng serve
-```
+### Informações do Projeto
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Frameworks e libs utilizadas:
 
-## Code scaffolding
+- Angular v19
+- Angular Material v19
+- Tailwind v4
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Como rodar o projeto (Com Docker Compose)
 
-```bash
-ng generate component component-name
-```
+### Requisitos:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Docker
+- Docker Compose
 
-```bash
-ng generate --help
-```
+### Passos
 
-## Building
+- Na raiz do projeto, rode o comando `docker compose up -d`
 
-To build the project run:
+Isso fará com que o projeto seja buildado e levantado no endereço http://localhost:8080
 
-```bash
-ng build
-```
+## Como debugar o projeto
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Versão que roda direto no computador
 
-## Running unit tests
+- Tenha instalado o Node na versão 22
+- Rode o comando `npm i` na raiz do projeto para baixar todos as dependências
+- Após terminar de rodar, aperte F5 no seu teclado para inicar o projeto.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Versão que roda em DevContainer
 
-```bash
-ng test
-```
+DevContainer é deixar rodar todo o ambiente de desenvolvimento em um container docker sem precisar instalar Node ou outras dependencias.
 
-## Running end-to-end tests
+#### Requisitos
 
-For end-to-end (e2e) testing, run:
+- Docker instalado
+- Extensão [DevContainer](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) no VSCode
 
-```bash
-ng e2e
-```
+#### Como rodar
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Com o docker e extensão instalados
 
-## Additional Resources
+- No seu VSCode, aperte as seguintes teclas: CTRL+SHIFT+P
+- Procure pela opção 'Dev Containers: Rebuild and Reopen in Container'
+  ![Opção que deve ser usada](docs/readme/image.png)
+- Aguarde o VSCode criar o container (Demora uns 5 minutos)
+- Com o container carregado, rode o comando `npm i` para instalar as dependências do projeto
+- Após terminar de instalar as depêndencias, Aperte F5 para iniciar o projeto.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Imagens do projeto rodando
+
+## Desktop
+
+### Homepage:
+
+- ![alt text](docs/readme/image-3.png)
+
+- ![alt text](docs/readme/image-1.png)
+
+### Detalhes do Desaparecido:
+
+- ![alt text](docs/readme/image-2.png)
+
+### Envio de informações
+
+- ![alt text](docs/readme/image-4.png)
+
+## Mobile (Responsivo)
+
+![alt text](docs/readme/image-1-mobile.png)
+
+![alt text](docs/readme/image-2-mobile.png)
+
+![alt text](docs/readme/image-3-mobile.png)
