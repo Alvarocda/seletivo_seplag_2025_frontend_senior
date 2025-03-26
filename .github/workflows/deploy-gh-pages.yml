@@ -16,10 +16,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Limpar Cache npm
+        run: npm cache clean --force
+
       - name: Install and Build
         run: |
-          npm i
-          npm i @angular/cli:19.2.4
+          npm ci
           ng build --output-path docs --base-href /seletivo_seplag_2025_frontend_senior/
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
