@@ -17,7 +17,10 @@ jobs:
           node-version: 22
 
       - name: Limpar Cache npm
-        run: npm cache clean --force
+        run: npm cache clean --force]
+
+      - name: Instalar o Angular CLI
+        run: npm install @angular/cli@19
 
       - name: Install and Build
         run: |
