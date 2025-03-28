@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppHomeCardSkeletonComponent } from './components/home-card-skeleton/home-card-skeleton.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [],
-  declarations: [HomeComponent, HomeCardComponent],
+  declarations: [
+    HomeComponent,
+    HomeCardComponent,
+    AppHomeCardSkeletonComponent,
+  ],
   providers: [],
 })
 export class HomeModule {}
