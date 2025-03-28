@@ -2,11 +2,11 @@
 
 - [Dados do Participante](#dados-do-participante)
 - [Informações do Projeto](#informações-do-projeto)
+- [Live Demo](#live-demo)
 - [Executando a Aplicação](#executando-a-aplicação)
   - [Com Node.js](#com-nodejs)
   - [Com Docker-Compose](#com-docker-compose)
   - [Com Docker sem Docker Compose](#com-docker-sem-docker-compose)
-- [Live Demo](#live-demo)
 - [Imagens do Projeto](#imagens-do-projeto-rodando)
 
 ### VAGA: FRONTEND SENIOR
@@ -25,6 +25,10 @@ Frameworks e libs utilizadas:
 - Angular Material v19
 - Tailwind v4
 - Ngx Toastr
+
+### Live Demo
+
+Uma versão de demonstração desse projeto esta disponivel no endereço https://alvarocda.github.io/seletivo_seplag_2025_frontend_senior/
 
 ## Executando a Aplicação
 
@@ -60,10 +64,6 @@ docker run -d -t -p 8095:80 alvarocda/seletivo2025
 ```
 
 Espere o container levantar e então em um browser acessa a url http://localhost:8080
-
-### Live Demo
-
-Uma versão de demonstração desse projeto esta disponivel no endereço https://alvarocda.github.io/seletivo_seplag_2025_frontend_senior/
 
 # Imagens do projeto rodando
 
