@@ -1,6 +1,6 @@
 <div class="h-full w-full bg-gray-100">
   @if (carregando) {
-  <div class="flex flex-col gap-3 items-center justify-center">
+  <div class="flex flex-col gap-3 items-center justify-center h-full w-full">
     <mat-spinner></mat-spinner>
     <div class="text-center">
       <p>Aguarde</p>
@@ -19,15 +19,15 @@
           'border-teal-700': foiEncontrada
         }"
       />
-      <div class="flex flex-col items-start justify-center">
+      <div class="flex flex-col items-start justify-center pt-2">
         <div
-          class="font-semibold text-white p-1 -mt-1 lg:mt-0 rounded-b-md lg:rounded-b-none lg:rounded-br-md lg:rounded-tr-md text-2xl"
+          class="font-semibold text-white p-1 lg:mt-0 rounded-b-md lg:rounded-b-none lg:rounded-br-md lg:rounded-tr-md text-2xl"
           [ngClass]="{
             'bg-red-500': foiEncontrada === false,
             'bg-teal-700': foiEncontrada
           }"
         >
-          @if (foiEncontrada) { LOCALIZADO } @else { DESAPARECIDO }
+          @if (foiEncontrada) { LOCALIZADO(A) } @else { DESAPARECIDO(A) }
         </div>
         <div class="p-4 clas flex flex-col">
           <div class="uppercase font-semibold text-2xl md:text-3xl">
@@ -80,7 +80,7 @@
           VIU OU SABE DESSA PESSOA?
         </button>
         <div
-          class="flex flex-col items-center justify-center w-full gap-1 px-4"
+          class="flex flex-col items-center justify-center w-full gap-1 px-4 pt-4"
         >
           <p>Ajude compartilhando:</p>
           <div

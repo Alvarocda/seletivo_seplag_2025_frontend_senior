@@ -83,6 +83,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   limparFormBusca(): void {
     this.formBusca.reset();
+    this.formBusca.patchValue({ status: 'DESAPARECIDO' });
     this._facade.setarFiltro({} as IFiltro);
   }
 
