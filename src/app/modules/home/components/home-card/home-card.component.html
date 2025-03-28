@@ -4,18 +4,20 @@
 >
   <div class="w-full">
     @if (carregandoImagem) {
-    <div class="flex w-full h-full items-center justify-center">
+    <div class="flex w-full h-80 items-center justify-center">
       <mat-spinner></mat-spinner>
     </div>
     }
-
     <img
       [src]="desaparecido.urlFoto ?? 'assets/images/sem_foto.jpg'"
       class="w-full h-80 object-cover object-center"
       onerror="this.src='assets/images/sem_foto.jpg'"
+      [ngClass]="{
+        hidden: carregandoImagem,
+        block: carregandoImagem === false
+      }"
       (loadstart)="toggleCarregandoImagem(true)"
       (load)="toggleCarregandoImagem(false)"
-      loading="lazy"
     />
   </div>
 
