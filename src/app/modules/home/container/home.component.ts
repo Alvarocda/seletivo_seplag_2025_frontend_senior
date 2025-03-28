@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._isDestroyed$))
       .subscribe((paginacao: IPaginacaoRequest) => {
         this.paginacao = paginacao;
-        console.log(`p ${this.paginacao.pagina}`);
       });
 
     this._facade.filtro$
