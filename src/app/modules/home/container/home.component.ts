@@ -79,6 +79,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   handlePagination(event: PageEvent) {
     this._facade.handlePagination(event);
+    const titulo = window.document.getElementById('resultados');
+    titulo?.scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 
   limparFormBusca(): void {
