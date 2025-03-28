@@ -77,6 +77,7 @@ export class DetalhesDesaparecidoFacade {
       maxWidth: '600px',
       width: '100%',
       panelClass: 'm-4',
+      disableClose: true,
     });
   }
 }
