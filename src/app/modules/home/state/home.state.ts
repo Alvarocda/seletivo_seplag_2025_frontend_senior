@@ -24,7 +24,7 @@ export class HomeState {
     >({} as IResultadoPaginado<IDesaparecido>);
     this._paginacao$ = new BehaviorSubject<IPaginacaoRequest>({
       pagina: 0,
-      porPagina: 12,
+      porPagina: 20,
     });
     this._carregando$ = new BehaviorSubject<boolean>(false);
     this._filtroBusca$ = new BehaviorSubject<IFiltro>({} as IFiltro);

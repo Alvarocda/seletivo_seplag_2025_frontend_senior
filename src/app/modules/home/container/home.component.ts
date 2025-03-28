@@ -23,7 +23,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class HomeComponent implements OnInit, OnDestroy {
   private _isDestroyed$ = new Subject<void>();
   carregando: boolean = true;
-  paginacao: IPaginacaoRequest = { pagina: 0, porPagina: 12 };
+  paginacao: IPaginacaoRequest = { pagina: 0, porPagina: 20 };
   filtro: IFiltro = {} as IFiltro;
   listaSexos = ListaSexos;
   desaparecidos: IResultadoPaginado<IDesaparecido> =
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._isDestroyed$))
       .subscribe((paginacao: IPaginacaoRequest) => {
         this.paginacao = paginacao;
+        console.log(`p ${this.paginacao.pagina}`);
       });
 
     this._facade.filtro$

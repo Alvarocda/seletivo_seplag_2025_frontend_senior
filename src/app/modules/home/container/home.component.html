@@ -108,6 +108,8 @@
 <mat-paginator
   class="w-full mt-4"
   [length]="desaparecidos.totalElements"
+  [pageIndex]="paginacao.pagina"
+  [pageSize]="paginacao.porPagina"
   [pageSizeOptions]="[20, 50, 100]"
   aria-label="Selecione uma página"
   (page)="handlePagination($event)"
