@@ -1,5 +1,14 @@
 ## PROCESSO SELETIVO SEPLAG 2025
 
+- [Dados do Participante](#dados-do-participante)
+- [Informações do Projeto](#informações-do-projeto)
+- [Executando a Aplicação](#executando-a-aplicação)
+  - [Com Node.js](#com-nodejs)
+  - [Com Docker-Compose](#com-docker-compose)
+  - [Com Docker sem Docker Compose](#com-docker-sem-docker-compose)
+- [Live Demo](#live-demo)
+- [Imagens do Projeto](#imagens-do-projeto-rodando)
+
 ### VAGA: FRONTEND SENIOR
 
 ### DADOS DO PARTICIPANTE:
@@ -15,47 +24,46 @@ Frameworks e libs utilizadas:
 - Angular v19
 - Angular Material v19
 - Tailwind v4
+- Ngx Toastr
 
-## Como rodar o projeto (Com Docker Compose)
+## Executando a Aplicação
 
-### Requisitos:
-
-- Docker
-- Docker Compose
-
-### Passos
-
-- Na raiz do projeto, rode o comando `docker compose up -d`
-
-Isso fará com que o projeto seja buildado e levantado no endereço http://localhost:8080
-
-## Como debugar o projeto
-
-### Versão que roda direto no computador
+### Com Node.js
 
 - Tenha instalado o Node na versão 22
 - Rode o comando `npm i` na raiz do projeto para baixar todos as dependências
 - Após terminar de rodar, aperte F5 no seu teclado para inicar o projeto.
 
-### Versão que roda em DevContainer
+### Com Docker Compose
 
-DevContainer é deixar rodar todo o ambiente de desenvolvimento em um container docker sem precisar instalar Node ou outras dependencias.
+#### Requisitos:
 
-#### Requisitos
+- Docker
+- Docker Compose
 
-- Docker instalado
-- Extensão [DevContainer](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) no VSCode
+#### Passos
 
-#### Como rodar
+- Na raiz do projeto, rode o comando
 
-Com o docker e extensão instalados
+```shell
+docker compose up -d
+```
 
-- No seu VSCode, aperte as seguintes teclas: CTRL+SHIFT+P
-- Procure pela opção 'Dev Containers: Rebuild and Reopen in Container'
-  ![Opção que deve ser usada](docs/readme/image.png)
-- Aguarde o VSCode criar o container (Demora uns 5 minutos)
-- Com o container carregado, rode o comando `npm i` para instalar as dependências do projeto
-- Após terminar de instalar as depêndencias, Aperte F5 para iniciar o projeto.
+Isso fará com que o projeto seja buildado e levantado no endereço http://localhost:8095
+
+### Com Docker (Sem docker compose)
+
+Em um terminal, rode o seguinte comando:
+
+```shell
+docker run -d -t -p 8095:80 alvarocda/seletivo2025
+```
+
+Espere o container levantar e então em um browser acessa a url http://localhost:8080
+
+### Live Demo
+
+Uma versão de demonstração desse projeto esta disponivel no endereço https://alvarocda.github.io/seletivo_seplag_2025_frontend_senior/
 
 # Imagens do projeto rodando
 
