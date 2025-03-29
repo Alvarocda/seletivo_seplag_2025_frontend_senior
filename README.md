@@ -14,8 +14,8 @@
 ### DADOS DO PARTICIPANTE:
 
 Nome: Álvaro Claro dos Anjos  
-Telefone: (66) 9 9982-7576
-Email: alvarocda@gmail.com
+Telefone: (66) 9 9982-7576  
+Email: alvarocda@gmail.com  
 Vaga: Frontend Senior
 
 ### Informações do Projeto
