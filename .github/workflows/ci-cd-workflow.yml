@@ -1,4 +1,4 @@
-name: Build e Push pro Github Pages
+name: Build e Push pro Github
 on: [push]
 permissions:
   contents: write
