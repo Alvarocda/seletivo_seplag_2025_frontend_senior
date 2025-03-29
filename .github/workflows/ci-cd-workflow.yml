@@ -1,39 +1,89 @@
-name: Build e Push pro Github
-on: [push]
-permissions:
-  contents: write
-
-jobs:
-  build-and-deploy:
-    name: Builda o projeto e coloca pra rodar no Github Pages
-    concurrency: ci-${{ github.ref }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Instalar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Limpar Cache npm
-        run: npm cache clean --force
-
-      - name: Instalar Dependencias
-        run: npm ci
-
-      - name: Instalar o Angular CLI
-        run: npm install @angular/cli@19
-
-      - name: Build
-        run: npm run build:gh-pages
-
-      - name: Criar página 404.html
-        run: cp docs/browser/index.html docs/browser/404.html
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: docs/browser
+name: Buildar e fazer deploy
+ on: [push]
+ permissions:
+   contents: write
+ 
+ jobs:
+   build-and-deploy:
+     name: Builda o projeto e coloca pra rodar no Github Pages
+     concurrency: ci-${{ github.ref }}
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v4
+ 
+       - name: Instalar Node.js
+         uses: actions/setup-node@v4
+         with:
+           node-version: 22
+ 
+       - name: Limpar Cache npm
+         run: npm cache clean --force
+ 
+       - name: Instalar Dependencias
+         run: npm ci
+ 
+       - name: Instalar o Angular CLI
+         run: npm install @angular/cli@19
+ 
+       - name: Build
+         run: npm run build:gh-pages
+ 
+       - name: Criar página 404.html
+         run: cp docs/browser/index.html docs/browser/404.html
+ 
+       - name: Deploy
+         uses: JamesIves/github-pages-deploy-action@v4
+         with:
+           branch: gh-pages
+           folder: docs/browser
+   deploy-docker-hub:
+     name: Cria e pública uma imagem no DockerHub
+     concurrency: ci-${{ github.ref }}
+     runs-on: ubuntu-latest
+     permissions:
+       packages: write
+       contents: read
+       attestations: write
+       id-token: write
+     steps:
+       - name: Checkout Repository
+         uses: actions/checkout@v4
+ 
+       - name: Docker meta
+         id: meta
+         uses: docker/metadata-action@v5
+         with:
+           images: alvarocda/seletivo2025:latest
+ 
+       - name: Logar no DockerHub
+         uses: docker/login-action@v3
+         with:
+           username: ${{ vars.DOCKERHUB_USERNAME }}
+           password: ${{ secrets.DOCKERHUB_TOKEN }}
+ 
+       - name: Instalar Node.js
+         uses: actions/setup-node@v4
+         with:
+           node-version: 22
+ 
+       - name: Limpar Cache npm
+         run: npm cache clean --force
+ 
+       - name: Instalar Dependencias
+         run: npm ci
+ 
+       - name: Instalar o Angular CLI
+         run: npm install @angular/cli@19
+ 
+       - name: Build
+         run: npm run build
+ 
+       - name: Build Image
+         uses: docker/build-push-action@v6
+         with:
+           context: .
+           file: ./Dockerfile1
+           push: true
+           tags: alvarocda/seletivo2025:latest
+           labels: ${{ steps.meta.outputs.labels }}
