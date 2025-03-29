@@ -27,7 +27,7 @@ jobs:
         run: npm install @angular/cli@19
 
       - name: Build
-        run: npm run build
+        run: npm run build:gh-pages
 
       - name: Criar página 404.html
         run: cp docs/browser/index.html docs/browser/404.html
@@ -77,7 +77,7 @@ jobs:
         run: npm install @angular/cli@19
 
       - name: Build
-        run: npm run build:docker
+        run: npm run build
 
       - name: Build Image
         uses: docker/build-push-action@v6
