@@ -24,7 +24,6 @@ export class DetalhesDesaparecidoComponent implements OnInit, OnDestroy {
     this._facade.carregando$
       .pipe(takeUntil(this._isDestroyed$))
       .subscribe((carregando: boolean) => {
-        console.log(carregando);
         this.carregando = carregando;
       });
 
