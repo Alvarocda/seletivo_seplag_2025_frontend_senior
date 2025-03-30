@@ -76,9 +76,9 @@ Espere o container levantar e então em um browser acessa a url http://localhost
 
 ![alt text](readme-docs/3.png)
 
-## Mobile (Responsivo)
-
 ![alt text](readme-docs/4.png)
+
+## Mobile (Responsivo)
 
 ![alt text](readme-docs/5.png)
 
