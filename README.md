@@ -64,7 +64,7 @@ Em um terminal, rode o seguinte comando:
 docker run -d -t -p 8095:80 alvarocda/seletivo2025
 ```
 
-Espere o container levantar e então em um browser acessa a url http://localhost:8080
+Espere o container levantar e então em um browser acessa a url http://localhost:8095
 
 # Imagens do projeto rodando
 
