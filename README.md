@@ -58,6 +58,10 @@ Isso fará com que o projeto seja buildado e levantado no endereço http://local
 
 ### Com Docker (Sem docker compose)
 
+#### Requisitos:
+
+- Docker
+
 Em um terminal, rode o seguinte comando:
 
 ```shell
