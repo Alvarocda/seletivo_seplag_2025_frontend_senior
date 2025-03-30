@@ -70,24 +70,16 @@ Espere o container levantar e então em um browser acessa a url http://localhost
 
 ## Desktop
 
-### Homepage:
+![alt text](readme-docs/1.png)
 
-- ![alt text](readme-docs/image-3.png)
+![alt text](readme-docs/2.png)
 
-- ![alt text](readme-docs/image-1.png)
-
-### Detalhes do Desaparecido:
-
-- ![alt text](readme-docs/image-2.png)
-
-### Envio de informações
-
-- ![alt text](readme-docs/image-4.png)
+![alt text](readme-docs/3.png)
 
 ## Mobile (Responsivo)
 
-![alt text](readme-docs/image-1-mobile.png)
+![alt text](readme-docs/4.png)
 
-![alt text](readme-docs/image-2-mobile.png)
+![alt text](readme-docs/5.png)
 
-![alt text](readme-docs/image-3-mobile.png)
+![alt text](readme-docs/6.png)
